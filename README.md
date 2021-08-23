@@ -30,5 +30,5 @@ Para executar o projeto no dispositivo atravéis da IDE Android Studio gere o ap
 ## Executando o projeto
 ### Clonando o projeto
 ```bash
-$ https://github.com/clebernascimento/CachuApp.git
+$ https://github.com/clebernascimento/Eventos.git
 ```
