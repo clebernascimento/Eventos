@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/listEventsFragment">
+
+    <fragment
+        android:id="@+id/listEventsFragment"
+        android:name="com.soft.eventos.ui.ListEventsFragment"
+        android:label="Eventos"
+        tools:layout="@layout/list_events_fragment" />
+</navigation>

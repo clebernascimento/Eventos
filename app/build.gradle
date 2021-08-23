@@ -7,15 +7,17 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.soft.eventos"
         flavorDimensions "default"
         minSdk 19
-        targetSdk 31
+        targetSdk 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,8 +34,8 @@ android {
         }
 
         homolog {
-            versionCode 7
-            versionName "1.1.1"
+            versionCode 1
+            versionName "1.0.0"
 
             resValue "string", "app_name", "Eventos Beta"
             resValue "string", "APP_ID", "com.soft.eventos.beta"
@@ -41,11 +43,6 @@ android {
             buildConfigField("String", "BASE_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io\"")
             buildConfigField("String", "APP_CENTER_KEY", "\"49a6fca2-7ade-4a0e-847b-e86baaa2cf88\"")
             buildConfigField("Boolean", "ANALYTICS", "true")
-        }
-
-        dev {
-            buildConfigField("String", "BASE_URL", "\"http://5f5a8f24d44d640016169133.mockapi.io\"")
-            buildConfigField("boolean", "IS_EMULATOR", "false")
         }
     }
 
@@ -74,9 +71,31 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //LifeCycle
+    implementation 'androidx.lifecycle:lifecycle-common:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+//    implementation 'android.arch.lifecycle:extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.3.1'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
 
     // Navigation Component
     def nav_version = "2.3.5"
@@ -112,4 +131,10 @@ dependencies {
     // Espresso dependencies
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+
+    // latest unstable
+    def koin_version = '2.2.0-alpha-1'
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
 }

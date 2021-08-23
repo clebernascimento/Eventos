@@ -1,6 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <string name="app_name">Eventos</string>-->
-
     <string name="text_search">Pesquisa</string>
     <string name="text_version">Versão</string>
     <string name="text_share_app">Compartilhar App</string>
