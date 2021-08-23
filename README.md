@@ -10,7 +10,7 @@ Mini Projeto desenvolvido em na linguagem kotlin, com estrutura MVVM sendo utili
 
 ## Sobre
 - Aplicação desenvolvida em Android Nativo para estudos utilizando uma requisição api on-line
-- Aplicação para guia de cachoeiras de Presidente Figueiredo
+- Aplicação para mostrar eventos de uma api on-line
 
 ## Tecnologias utilizadas
 - Android Nativo
@@ -18,7 +18,7 @@ Mini Projeto desenvolvido em na linguagem kotlin, com estrutura MVVM sendo utili
 - Arquitetura MVVM
 - Retrofit
 - Coroutines
-- Injeção de dependencia
+- Injeção de dependencia (KOIN)
 - Glide
 - Biblioteca para dimensões SD/DP
 
