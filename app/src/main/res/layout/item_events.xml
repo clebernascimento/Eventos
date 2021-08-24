@@ -34,7 +34,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="@dimen/_250sdp"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_height="@dimen/_170sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +49,8 @@
 
                     <ImageView
                         android:id="@+id/imgEvents"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:src="@mipmap/img" />
 
                 </LinearLayout>
@@ -89,7 +89,7 @@
                 android:id="@+id/loactionEvents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginBottom="@dimen/_8sdp"
                 android:drawableTop="@drawable/ic_location"
                 android:text="Como chegar?"

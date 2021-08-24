@@ -3,6 +3,7 @@ package com.soft.eventos.di
 import com.soft.eventos.BuildConfig
 import com.soft.eventos.data.api.ApiService
 import com.soft.eventos.data.repository.EventsRepository
+import com.soft.eventos.ui.detailsEvents.DetailsEventsViewModel
 import com.soft.eventos.ui.eventList.ListEventsViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,6 +19,7 @@ object AppModules {
         single { providerApiEvents() }
         single { EventsRepository(get()) }
         viewModel { ListEventsViewModel(get()) }
+        viewModel { DetailsEventsViewModel() }
     }
 
     private fun providerApiEvents(): ApiService {

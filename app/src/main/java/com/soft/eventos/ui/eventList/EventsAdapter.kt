@@ -36,12 +36,20 @@ class EventsAdapter(
                     .into(imgEvents)
             }
         }
+
+        fun bindClick(eventsClick: Events?, position: Int, listener: ListEventsFragment) {
+            itemView.setOnClickListener { view: View? ->
+                if (eventsClick != null) {
+                    listener.onItemClick(eventsClick, position)
+                }
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val event = listEvents[position]
         holder.bind(listEvents[position])
-//        holder.bindClick(event, position, listener)
+        holder.bindClick(event, position, listener)
     }
 
     override fun getItemCount(): Int = listEvents.size

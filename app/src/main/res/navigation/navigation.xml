@@ -8,6 +8,23 @@
     <fragment
         android:id="@+id/listEventsFragment"
         android:name="com.soft.eventos.ui.eventList.ListEventsFragment"
-        android:label="Eventos"
-        tools:layout="@layout/list_events_fragment" />
+        android:label="@string/text_events"
+        tools:layout="@layout/list_events_fragment">
+        <action
+            android:id="@+id/action_listEventsFragment_to_detailsEventsFragment"
+            app:destination="@id/detailsEventsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsEventsFragment"
+        android:name="com.soft.eventos.ui.detailsEvents.DetailsEventsFragment"
+        android:label="@string/text_details_events"
+        tools:layout="@layout/details_events_fragment">
+        <argument
+            android:name="DetailsEventsFragment"
+            android:defaultValue="@null"
+            app:argType="com.soft.eventos.data.model.Events"
+            app:nullable="true" />
+    </fragment>
+
 </navigation>

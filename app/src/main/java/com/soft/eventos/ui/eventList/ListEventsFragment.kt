@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soft.eventos.BuildConfig
@@ -14,8 +15,10 @@ import com.soft.eventos.data.model.Events
 import com.soft.eventos.databinding.ListEventsFragmentBinding
 import com.soft.eventos.utils.Status
 import com.soft.eventos.utils.UtilList
+import com.soft.eventos.utils.navigateWithAnimations
 import kotlinx.android.synthetic.main.list_events_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.FieldPosition
 
 class ListEventsFragment : Fragment() {
 
@@ -164,6 +167,15 @@ class ListEventsFragment : Fragment() {
     private fun updateRecyclerView() {
         recyclerView.apply {
             adapter!!.notifyDataSetChanged()
+        }
+    }
+
+    fun onItemClick(events: Events?, position: Int) {
+        if (events != null) {
+            val directions = ListEventsFragmentDirections
+                .actionListEventsFragmentToDetailsEventsFragment()
+            findNavController().navigateWithAnimations(directions)
+            adapter.notifyItemChanged(position)
         }
     }
 }

@@ -7,4 +7,6 @@
     <string name="text_assessment">Avalie nosso App</string>
     <string name="text_date">Data:</string>
     <string name="text_cifrao">R$</string>
+    <string name="text_events">Eventos</string>
+    <string name="text_details_events">Detalhes do Evento</string>
 </resources>
