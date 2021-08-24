@@ -1,4 +1,4 @@
-package com.soft.eventos.ui
+package com.soft.eventos.ui.eventList
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -24,6 +24,7 @@ class ListEventsFragment : Fragment() {
     private lateinit var adapter: EventsAdapter
     private lateinit var mainActivity: MainActivity
     private lateinit var utilList: UtilList
+    private val listNameEvents: MutableList<Events> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,13 +78,15 @@ class ListEventsFragment : Fragment() {
      * Metodo para fazer a requição do ViewModel
      */
     private fun setupObservers() {
-        viewModel.getEvents().observe(viewLifecycleOwner, {
-            it?.let { resource ->
-                when (resource.status) {
+        viewModel.getEvents().observe(viewLifecycleOwner, { allEvents ->
+            allEvents.let { resources ->
+                when (resources.status) {
                     Status.SUCCESS -> {
-                        utilList.setSuccess()
-                        resource.data?.let { events ->
-                            retrieveList(events)
+                        if (resources.data?.isNullOrEmpty() == true) {
+                            utilList.setError()
+                        } else {
+                            utilList.setSuccess()
+                            resources.data?.let(::listEvents)
                         }
                     }
                     Status.ERROR -> {
@@ -100,10 +103,13 @@ class ListEventsFragment : Fragment() {
     /**
      * Metodo para carregar os dados da requisição SUCCESS
      */
-    private fun retrieveList(event: List<Events>) {
+    private fun listEvents(event: List<Events>) {
         adapter.addEvents(event)
     }
 
+    /**
+     * Metodo para pesquisar eventos no search na toolbar
+     */
     @SuppressLint("ResourceType")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         mainActivity.menuInflater.inflate(R.menu.menu, menu)
@@ -114,15 +120,50 @@ class ListEventsFragment : Fragment() {
         searchView.queryHint = getString(R.string.text_search_login)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-//                search(query)
+                search(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-//                search(newText)
+                search(newText)
                 return true
             }
         })
         return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    /**
+     * Metodo de pesquisa dentro do recyclerView
+     */
+    private fun search(text: String?) {
+        adapter.apply {
+            listNameEvents.clear()
+            listNameEvents.addAll(listEvents)
+            listEvents.clear()
+            text?.let {
+                if (it.isEmpty()) {
+                    setupObservers()
+                } else {
+                    listNameEvents.forEach { events ->
+                        if (events.title.contains(text, true)) {
+                            adapter.listEvents.add(events)
+                        }
+                    }
+                    if (listNameEvents.isNullOrEmpty()) {
+                        utilList.setError()
+                    }
+                }
+                updateRecyclerView()
+            }
+        }
+    }
+
+    /**
+     * Metodo para atualizar o recyclerView apos uma pesquisa no search
+     */
+    private fun updateRecyclerView() {
+        recyclerView.apply {
+            adapter!!.notifyDataSetChanged()
+        }
     }
 }

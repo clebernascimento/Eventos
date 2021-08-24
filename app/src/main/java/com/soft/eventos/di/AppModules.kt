@@ -3,7 +3,7 @@ package com.soft.eventos.di
 import com.soft.eventos.BuildConfig
 import com.soft.eventos.data.api.ApiService
 import com.soft.eventos.data.repository.EventsRepository
-import com.soft.eventos.ui.ListEventsViewModel
+import com.soft.eventos.ui.eventList.ListEventsViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel

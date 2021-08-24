@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listEventsFragment"
-        android:name="com.soft.eventos.ui.ListEventsFragment"
+        android:name="com.soft.eventos.ui.eventList.ListEventsFragment"
         android:label="Eventos"
         tools:layout="@layout/list_events_fragment" />
 </navigation>

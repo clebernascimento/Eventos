@@ -5,18 +5,18 @@
 
     <data>
 
-        <import type="com.soft.eventos.ui.ListEventsViewModel" />
+        <import type="com.soft.eventos.ui.eventList.ListEventsViewModel" />
 
         <variable
             name="viewModel"
-            type="ListEventsViewModel" />
+            type="com.soft.eventos.ui.eventList.ListEventsViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ListEventsFragment">
+        tools:context=".ui.eventList.ListEventsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

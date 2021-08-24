@@ -6,4 +6,6 @@
     <string name="text_share_app">Compartilhar App</string>
     <string name="text_search_login">Pesquisar Evento</string>
     <string name="text_assessment">Avalie nosso App</string>
+    <string name="text_date">Data:</string>
+    <string name="text_cifrao">R$</string>
 </resources>

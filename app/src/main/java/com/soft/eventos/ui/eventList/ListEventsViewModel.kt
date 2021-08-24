@@ -1,4 +1,4 @@
-package com.soft.eventos.ui
+package com.soft.eventos.ui.eventList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData

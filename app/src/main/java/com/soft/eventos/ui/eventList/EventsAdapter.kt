@@ -1,4 +1,4 @@
-package com.soft.eventos.ui
+package com.soft.eventos.ui.eventList
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.soft.eventos.R
 import com.soft.eventos.data.model.Events
-import com.soft.eventos.ui.EventsAdapter.*
+import com.soft.eventos.ui.eventList.EventsAdapter.*
 import com.soft.eventos.utils.DateTime
 import kotlinx.android.synthetic.main.item_events.view.*
-import java.time.format.DateTimeFormatter
 
 class EventsAdapter(
-    private val listEvents: MutableList<Events> = mutableListOf(),
+    val listEvents: MutableList<Events> = mutableListOf(),
     val listener: ListEventsFragment
 ) : RecyclerView.Adapter<DataViewHolder>() {
 
@@ -25,18 +24,19 @@ class EventsAdapter(
 
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(events: Events) {
             itemView.apply {
                 nameEvents.text = events.title
-                dateEvents.text = "Data: " + DateTime.getDate(events.date)
-                priceEvents.text = "R$" + events.price
+                dateEvents.text =
+                    "${context.getString(R.string.text_date)} " + DateTime.getDate(events.date)
+                priceEvents.text = "${context.getString(R.string.text_cifrao)} " + events.price
                 Glide.with(imgEvents.context)
                     .load(events.image)
                     .into(imgEvents)
             }
         }
     }
-
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val event = listEvents[position]
