@@ -19,7 +19,7 @@ object AppModules {
         single { providerApiEvents() }
         single { EventsRepository(get()) }
         viewModel { ListEventsViewModel(get()) }
-        viewModel { DetailsEventsViewModel() }
+        viewModel { DetailsEventsViewModel(get()) }
     }
 
     private fun providerApiEvents(): ApiService {

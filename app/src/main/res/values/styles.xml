@@ -87,4 +87,119 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="nameEvents">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/blue_xd</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+    </style>
+
+    <style name="cardView">
+        <item name="android:layout_width">@dimen/_250sdp</item>
+        <item name="android:layout_height">@dimen/_170sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:background">@color/white_xd</item>
+    </style>
+
+    <style name="linearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="dateEvents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/_8sdp</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/blue_xd</item>
+    </style>
+
+    <style name="priceEvents">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_8sdp</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/blue_xd</item>
+    </style>
+
+    <style name="descriptionEvents">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+        <item name="android:justificationMode">inter_word</item>
+        <item name="android:textColor">@color/blue_xd</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+    </style>
+
+    <style name="divider4">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+        <item name="android:background">@color/blue_xd</item>
+    </style>
+
+    <style name="linearLayout2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_8sdp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">@dimen/_8sdp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="labelName" parent="TextInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:theme">@style/SelectionColor</item>
+    </style>
+
+    <style name="editName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:paddingStart">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/blue_xd</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:theme">@style/SelectionColor</item>
+    </style>
+
+    <style name="textInput_labelEmail" parent="TextInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:theme">@style/SelectionColor</item>
+    </style>
+
+    <style name="editEmail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:paddingStart">@dimen/_8sdp</item>
+        <item name="android:theme">@style/SelectionColor</item>
+        <item name="android:textColor">@color/blue_xd</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+    </style>
+
+    <style name="btnChekin">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+        <item name="android:enabled">false</item>
+        <item name="android:background">@drawable/layout_buttom_checking</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
 </resources>

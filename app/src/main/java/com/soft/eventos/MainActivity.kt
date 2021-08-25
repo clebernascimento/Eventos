@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(app_toolbar)
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.navigation) as NavHostFragment
         navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)

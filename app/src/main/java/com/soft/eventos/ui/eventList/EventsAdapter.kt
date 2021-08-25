@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_events.view.*
 class EventsAdapter(
     val listEvents: MutableList<Events> = mutableListOf(),
     val listener: ListEventsFragment
-) : RecyclerView.Adapter<DataViewHolder>() {
+) : RecyclerView.Adapter<EventsAdapter.DataViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder =
         DataViewHolder(
@@ -28,8 +28,7 @@ class EventsAdapter(
         fun bind(events: Events) {
             itemView.apply {
                 nameEvents.text = events.title
-                dateEvents.text =
-                    "${context.getString(R.string.text_date)} " + DateTime.getDate(events.date)
+                dateEvents.text = "${context.getString(R.string.text_date)} " + DateTime.getDate(events.date)
                 priceEvents.text = "${context.getString(R.string.text_cifrao)} " + events.price
                 Glide.with(imgEvents.context)
                     .load(events.image)

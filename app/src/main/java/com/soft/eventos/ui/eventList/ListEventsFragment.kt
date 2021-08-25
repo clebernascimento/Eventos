@@ -18,7 +18,6 @@ import com.soft.eventos.utils.UtilList
 import com.soft.eventos.utils.navigateWithAnimations
 import kotlinx.android.synthetic.main.list_events_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.FieldPosition
 
 class ListEventsFragment : Fragment() {
 
@@ -46,7 +45,6 @@ class ListEventsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setHasOptionsMenu(true)
-
         setupUI()
         setupObservers()
     }
@@ -54,9 +52,23 @@ class ListEventsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity?.let {
+            val act = it as MainActivity
             val list = it
             utilList = UtilList(list)
             mainActivity = (requireActivity() as MainActivity)
+        }
+        viewModel.getEvents()
+    }
+
+    /**
+     * Metodo no item do RecyclerView
+     */
+    fun onItemClick(events: Events?, position: Int) {
+        if (events != null) {
+            val directions = ListEventsFragmentDirections
+                .actionListEventsFragmentToDetailsEventsFragment(events)
+            findNavController().navigateWithAnimations(directions)
+            adapter.notifyItemChanged(position)
         }
     }
 
@@ -167,15 +179,6 @@ class ListEventsFragment : Fragment() {
     private fun updateRecyclerView() {
         recyclerView.apply {
             adapter!!.notifyDataSetChanged()
-        }
-    }
-
-    fun onItemClick(events: Events?, position: Int) {
-        if (events != null) {
-            val directions = ListEventsFragmentDirections
-                .actionListEventsFragmentToDetailsEventsFragment()
-            findNavController().navigateWithAnimations(directions)
-            adapter.notifyItemChanged(position)
         }
     }
 }

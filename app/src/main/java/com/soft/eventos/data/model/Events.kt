@@ -1,9 +1,9 @@
 package com.soft.eventos.data.model
 
-import java.io.Serializable
-import java.util.*
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class Events (
     var id:Long,
     var title: String,
@@ -13,4 +13,4 @@ data class Events (
     var longitude: String,
     var latitude: String,
     var price: String
-) : Serializable
+) : Parcelable

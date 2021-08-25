@@ -91,7 +91,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host"
+            android:id="@+id/navigation"
             style="@style/layout_nav_host"
             android:layout_height="0dp"
             app:defaultNavHost="true"
