@@ -19,4 +19,5 @@
 
     <string name="checking_successfully">Chek-in realizado com sucesso!</string>
     <string name="checking_error">Erro ao realizar check-in</string>
+    <string name="text_ready">Aguarde!</string>
 </resources>

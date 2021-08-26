@@ -30,14 +30,31 @@
             app:layout_constraintVertical_bias="1.0"
             tools:listitem="@layout/item_events" />
 
-        <ProgressBar
+        <LinearLayout
             android:id="@+id/progressBar"
-            style="@style/progress_bar"
-            android:background="@drawable/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                style="@style/progress_bar"
+                android:background="@drawable/progressbar" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:text="@string/text_ready"
+                android:textColor="@color/blue_xd"
+                android:textSize="@dimen/_12ssp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutErrorList"
