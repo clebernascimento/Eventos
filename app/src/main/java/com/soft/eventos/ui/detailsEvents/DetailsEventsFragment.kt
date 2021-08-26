@@ -80,9 +80,21 @@ class DetailsEventsFragment : Fragment() {
         viewModel.sendChecking(checking.trim(), chek.trim()).observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.SUCCESS -> {
-                    it.data?.let { check ->
-                        clearFields()
-                        hideKeyboard()
+                    MainScope().launch {
+                        it.data?.let { check ->
+                            clearFields()
+                            hideKeyboard()
+                            binding.progressBar.visibility = View.GONE
+                            binding.scrollView.visibility = View.VISIBLE
+                            viewModel.messageEventData.observe(viewLifecycleOwner) { stringId ->
+                                Snackbar.make(requireView(), stringId, Snackbar.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+
+                Status.ERROR -> {
+                    MainScope().launch {
                         binding.progressBar.visibility = View.GONE
                         binding.scrollView.visibility = View.VISIBLE
                         viewModel.messageEventData.observe(viewLifecycleOwner) { stringId ->
@@ -91,17 +103,11 @@ class DetailsEventsFragment : Fragment() {
                     }
                 }
 
-                Status.ERROR -> {
-                    binding.progressBar.visibility = View.GONE
-                    binding.scrollView.visibility = View.VISIBLE
-                    viewModel.messageEventData.observe(viewLifecycleOwner) { stringId ->
-                        Snackbar.make(requireView(), stringId, Snackbar.LENGTH_LONG).show()
-                    }
-                }
-
                 Status.LOADING -> {
-                    binding.progressBar.visibility = View.VISIBLE
-                    binding.scrollView.visibility = View.GONE
+                    MainScope().launch {
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.scrollView.visibility = View.GONE
+                    }
                 }
             }
         }
