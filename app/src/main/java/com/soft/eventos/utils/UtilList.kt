@@ -2,9 +2,10 @@ package com.soft.eventos.utils
 
 import android.view.View
 import androidx.fragment.app.FragmentActivity
+import com.soft.eventos.MainActivity
 import kotlinx.android.synthetic.main.list_events_fragment.*
 
-class UtilList(val mainFragment: FragmentActivity) {
+class UtilList(val mainFragment: MainActivity) {
 
     fun setLoading() {
         mainFragment.progressBar.visibility = View.VISIBLE

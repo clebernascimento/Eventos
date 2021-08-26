@@ -1,11 +1,9 @@
 package com.soft.eventos.ui.detailsEvents
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.soft.eventos.data.model.CheckinEvents
+import androidx.lifecycle.*
+import com.soft.eventos.R
+import com.soft.eventos.data.model.CheckingEvents
 import com.soft.eventos.data.model.Events
 import com.soft.eventos.data.repository.EventsRepository
 import com.soft.eventos.utils.Resources
@@ -13,19 +11,38 @@ import kotlinx.coroutines.Dispatchers
 
 class DetailsEventsViewModel(private val eventsRepository: EventsRepository) : ViewModel() {
 
-    private val _Events = MutableLiveData<Events>()
-    val events: LiveData<Events> = _Events
+    private val _events = MutableLiveData<Events>()
+    val events: LiveData<Events> = _events
 
-    fun sendChecking(checking: CheckinEvents) = liveData(Dispatchers.IO) {
+    private val _stateEventData = MutableLiveData<CheckingState>()
+    val stateEventData: LiveData<CheckingState>
+        get() = _stateEventData
+
+    private val _messageEventData = MutableLiveData<Int>()
+    val messageEventData: LiveData<Int>
+        get() = _messageEventData
+
+    fun sendChecking(name: String, email: String) = liveData(Dispatchers.IO) {
         emit(Resources.loading(data = null))
         try {
-            events.value?.let {
-                emit(Resources.success(data = eventsRepository.postChecking(checking)))
+            events.value?.let { wtf ->
+                val _check = CheckingEvents(wtf.id.toInt(), name, email)
+                emit(Resources.success(data = eventsRepository.postChecking(_check)))
+                _stateEventData.value = CheckingState.Checking
+                _messageEventData.value = R.string.checking_successfully
             }
         } catch (e: Exception) {
-            e.printStackTrace()
-            Log.e("error", e.message.orEmpty())
-            emit(Resources.error(data = null, message = e.message ?: "Erro ao enviar checking"))
+            _messageEventData.value = R.string.checking_error
+            Log.e(TAG, e.toString())
+            emit(Resources.error(data = null, message = e.message ?: "Erro ao enviar comentário"))
         }
+    }
+
+    sealed class CheckingState {
+        object Checking : CheckingState()
+    }
+
+    companion object {
+        private val TAG = DetailsEventsViewModel::class.java.simpleName
     }
 }

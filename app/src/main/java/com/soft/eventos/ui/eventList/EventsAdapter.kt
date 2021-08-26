@@ -1,6 +1,8 @@
 package com.soft.eventos.ui.eventList
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,11 +30,23 @@ class EventsAdapter(
         fun bind(events: Events) {
             itemView.apply {
                 nameEvents.text = events.title
-                dateEvents.text = "${context.getString(R.string.text_date)} " + DateTime.getDate(events.date)
+                dateEvents.text =
+                    "${context.getString(R.string.text_date)} " + DateTime.getDate(events.date)
                 priceEvents.text = "${context.getString(R.string.text_cifrao)} " + events.price
                 Glide.with(imgEvents.context)
                     .load(events.image)
                     .into(imgEvents)
+
+                loactionEvents.setOnClickListener {
+                    if (events.latitude != null && events.longitude != null) {
+                        val uri =
+                            Uri.parse(context.getString(R.string.google_map_address) +
+                                    events.latitude + "," + events.longitude)
+                        val mapIntent = Intent(Intent.ACTION_VIEW, uri)
+                        mapIntent.setPackage("com.google.android.apps.maps")
+                        context.startActivity(mapIntent)
+                    }
+                }
             }
         }
 

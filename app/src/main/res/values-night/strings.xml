@@ -15,4 +15,8 @@
     <string name="text_name">Nome</string>
     <string name="text_email">E-mail</string>
     <string name="text_bottom_checking">Check-in</string>
+    <string name="google_map_address">http://maps.google.com/maps?daddr=</string>
+
+    <string name="checking_successfully">Chek-in realizado com sucesso!</string>
+    <string name="checking_error">Erro ao realizar check-in</string>
 </resources>

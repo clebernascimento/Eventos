@@ -16,7 +16,7 @@ class ListEventsViewModel(private val eventsRepository: EventsRepository) : View
             emit(
                 Resources.error(
                     data = null,
-                    message = exception.message ?: "Erro ao listar eventos"
+                    message = exception.message ?: "Error listing events"
                 )
             )
         }
