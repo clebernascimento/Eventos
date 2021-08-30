@@ -2,7 +2,11 @@
 Mini Projeto desenvolvido em na linguagem kotlin, com estrutura MVVM sendo utilizado KOIN como injeção de dependencia, esta sendo utilizado o Navigation para transições de interface entre telas
 
 <p align="center">
-    <img src="https://github.com/clebernascimento/Chock_Norris/blob/master/app/src/main/res/drawable/chock_norriss.JPG"/>
+    <img src="https://github.com/clebernascimento/Eventos/blob/master/app/src/main/res/drawable/list_events.png"/>
+     <img src="https://github.com/clebernascimento/Eventos/blob/master/app/src/main/res/drawable/details_events.png"/>
+     <img src="https://github.com/clebernascimento/Eventos/blob/master/app/src/main/res/drawable/checking_events.png"/>
+     <img src="https://github.com/clebernascimento/Eventos/blob/master/app/src/main/res/drawable/success_checking.png"/>
+     <img src="https://github.com/clebernascimento/Eventos/blob/master/app/src/main/res/drawable/error_checking.png"/>
     </br>
     <a href="readme_en.md">English</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="readme.md">Português</a>&nbsp;&nbsp;&nbsp;
