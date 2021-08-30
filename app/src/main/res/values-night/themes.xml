@@ -37,4 +37,5 @@
         <item name="colorControlActivated">@color/blue_xd</item>
         <item name="android:textColorHighlight">@color/blue_xd</item>
     </style>
+
 </resources>

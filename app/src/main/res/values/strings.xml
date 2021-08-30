@@ -1,5 +1,5 @@
 <resources>
-<!--    <string name="app_name">Eventos</string>-->
+    <!--    <string name="app_name">Eventos</string>-->
 
     <string name="text_search">Pesquisa</string>
     <string name="text_version">Versão</string>
@@ -25,4 +25,7 @@
     <string name="text_ready">Aguarde!</string>
     <string name="style_text_error_list">Erro ao listar evento</string>
     <string name="text_name_email_invalid">Nome/E-mail inválido!</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

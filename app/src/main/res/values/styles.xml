@@ -5,7 +5,7 @@
         <item name="android:name">androidx.navigation.fragment.NavHostFragment</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
-<!--        <item name="android:layout_marginTop">@dimen/_16sdp</item>-->
+        <!--        <item name="android:layout_marginTop">@dimen/_16sdp</item>-->
         <item name="android:background">@drawable/layout_list_body</item>
     </style>
 
