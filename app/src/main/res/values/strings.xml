@@ -18,7 +18,11 @@
     <string name="text_bottom_checking">Check-in</string>
     <string name="google_map_address">http://maps.google.com/maps?daddr=</string>
 
+    <string name="fildtext_empty">Campos Nome/E-mail não pode está fazios!</string>
+
     <string name="checking_successfully">Chek-in realizado com sucesso!</string>
     <string name="checking_error">Erro ao realizar check-in</string>
     <string name="text_ready">Aguarde!</string>
+    <string name="style_text_error_list">Erro ao listar evento</string>
+    <string name="text_name_email_invalid">Nome/E-mail inválido!</string>
 </resources>

@@ -13,13 +13,14 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_margin">@dimen/_8sdp</item>
-        <item name="android:visibility">visible</item>
+        <item name="android:visibility">gone</item>
     </style>
 
     <style name="progress_bar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:visibility">visible</item>
+        <item name="android:background">@drawable/progressbar</item>
     </style>
 
     <style name="layout_error_list">
@@ -27,7 +28,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
         <item name="android:gravity">center</item>
-        <item name="android:visibility">visible</item>
+        <item name="android:visibility">gone</item>
         <item name="android:layout_margin">@dimen/_16sdp</item>
     </style>
 
@@ -43,6 +44,7 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/blue_xd</item>
         <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:text">@string/style_text_error_list</item>
     </style>
 
     <style name="layout_menu">
@@ -195,11 +197,29 @@
     <style name="btnChekin">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
         <item name="android:layout_marginBottom">@dimen/_8sdp</item>
         <item name="android:enabled">true</item>
+        <item name="android:textColor">@color/bt_background_blue</item>
         <item name="android:background">@drawable/layout_buttom_checking</item>
         <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="style_text_wait">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/_12sdp</item>
+        <item name="android:textColor">@color/blue_xd</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:text">@string/text_ready</item>
+    </style>
+
+    <style name="style_layout_progressbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
 </resources>

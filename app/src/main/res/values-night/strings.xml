@@ -20,4 +20,6 @@
     <string name="checking_successfully">Chek-in realizado com sucesso!</string>
     <string name="checking_error">Erro ao realizar check-in</string>
     <string name="text_ready">Aguarde!</string>
+    <string name="style_text_error_list">Erro ao listar evento</string>
+    <string name="text_name_email_invalid">Nome/E-mail inválido!</string>
 </resources>

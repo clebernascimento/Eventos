@@ -18,182 +18,49 @@
         android:layout_height="match_parent"
         tools:context=".ui.DetailsEventsFragment">
 
-        <ScrollView
-            android:id="@+id/scrollView"
-            android:layout_width="0dp"
+        <include
+            android:id="@+id/include_details_events"
+            layout="@layout/include_details_events"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/nameEvents"
-                        style="@style/nameEvents"
-                        android:text="@string/text_title"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView"
-                        style="@style/cardView"
-                        app:cardCornerRadius="@dimen/_8sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nameEvents">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white_xd">
-
-                            <ImageView
-                                android:id="@+id/imgEvents"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:src="@mipmap/img" />
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout"
-                        style="@style/linearLayout"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-                        <TextView
-                            android:id="@+id/dateEvents"
-                            style="@style/dateEvents"
-                            android:text="@string/text_date" />
-
-                        <TextView
-                            android:id="@+id/priceEvents"
-                            style="@style/priceEvents"
-                            android:text="@string/text_cifrao" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/descriptionEvents"
-                        style="@style/descriptionEvents"
-                        android:text="@string/text_description"
-                        app:layout_constraintBottom_toTopOf="@+id/divider4"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-                    <View
-                        android:id="@+id/divider4"
-                        style="@style/divider4"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearLayout2"
-                    style="@style/linearLayout2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/text_checking"
-                        android:textColor="@color/blue_xd"
-                        android:textSize="@dimen/_14ssp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/labelName"
-                        style="@style/labelName"
-                        android:hint="@string/text_name"
-                        app:hintTextColor="@color/blue_xd"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editName"
-                            style="@style/editName" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/labelEmail"
-                        style="@style/textInput_labelEmail"
-                        android:hint="@string/text_email"
-                        app:hintTextColor="@color/blue_xd"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:passwordToggleTint="@color/blue_xd">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editEmail"
-                            style="@style/editEmail" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnChekin"
-                        style="@style/btnChekin"
-                        android:text="@string/text_bottom_checking" />
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </ScrollView>
-
-        <LinearLayout
-            android:id="@+id/progressBar"
+        <include
+            android:id="@+id/include_loading_checking"
+            layout="@layout/include_loading_checking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ProgressBar
-                style="@style/progress_bar"
-                android:background="@drawable/progressbar" />
+        <include
+            android:id="@+id/include_success_checking"
+            layout="@layout/include_success_checking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:text="Estamos efetuando seu chek-in"
-                android:textColor="@color/blue_xd"
-                android:textSize="@dimen/_12ssp"/>
-
-        </LinearLayout>
-
+        <include
+            android:id="@+id/include_error_checking"
+            layout="@layout/include_error_checking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

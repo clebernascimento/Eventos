@@ -2,11 +2,13 @@ package com.soft.eventos.ui.detailsEvents
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -18,16 +20,22 @@ import com.soft.eventos.databinding.DetailsEventsFragmentBinding
 import com.soft.eventos.utils.*
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.details_events_fragment.*
+import kotlinx.android.synthetic.main.include_details_events.*
+import kotlinx.android.synthetic.main.include_details_events.view.*
+import kotlinx.android.synthetic.main.include_error_checking.*
+import kotlinx.android.synthetic.main.include_error_checking.view.*
+import kotlinx.android.synthetic.main.include_success_checking.view.*
 import kotlinx.android.synthetic.main.item_events.view.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailsEventsFragment : Fragment() {
+class DetailsEventsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: DetailsEventsFragmentBinding
     private val viewModel: DetailsEventsViewModel by viewModel()
     private lateinit var mainActivity: MainActivity
+    private lateinit var utilChecking: UtilChecking
 
     private val args: DetailsEventsFragmentArgs by navArgs()
 
@@ -56,7 +64,10 @@ class DetailsEventsFragment : Fragment() {
         super.onResume()
         activity?.let {
             val list = it as MainActivity
-            mainActivity = (requireActivity() as MainActivity)
+            utilChecking = UtilChecking(list)
+            mainActivity = requireActivity() as MainActivity
+            include_success_checking.finishChecking.setOnClickListener(this)
+            include_error_checking.tryAgainChecking.setOnClickListener(this)
         }
     }
 
@@ -64,59 +75,50 @@ class DetailsEventsFragment : Fragment() {
     private fun setArgsFragment() {
         args.detailsEvents?.let { events ->
             binding.apply {
-                nameEvents.text = events.title
+                includeDetailsEvents.nameEvents.text = events.title
                 Glide.with(imgEvents.context)
                     .load(events.image)
-                    .into(imgEvents)
-                dateEvents.text =
+                    .into(includeDetailsEvents.imgEvents)
+                includeDetailsEvents.dateEvents.text =
                     "${getString(R.string.text_date)} " + DateTime.getDate(events.date)
-                priceEvents.text = "${getString(R.string.text_cifrao)} " + events.price
-                descriptionEvents.text = events.description
+                includeDetailsEvents.priceEvents.text = "${getString(R.string.text_cifrao)} " + events.price
+                includeDetailsEvents.descriptionEvents.text = events.description
             }
         }
     }
 
-    private fun sendChecking(checking: String, chek: String) {
-        viewModel.sendChecking(checking.trim(), chek.trim()).observe(viewLifecycleOwner) {
+    override fun onClick(view: View) {
+        when(view.id){
+            R.id.finishChecking -> {
+                hideKeyboard()
+                clearFields()
+                findNavController().popBackStack()
+            }
+
+            R.id.tryAgainChecking -> {
+                hideKeyboard()
+                clearFields()
+                utilChecking.clickTryAgainChecking()
+            }
+        }
+    }
+
+    private fun sendChecking(name: String, email: String) {
+        viewModel.sendChecking(name.trim(), email.trim()).observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.SUCCESS -> {
-                    MainScope().launch {
-                        it.data?.let { check ->
-                            clearFields()
-                            hideKeyboard()
-                            binding.progressBar.visibility = View.GONE
-                            binding.scrollView.visibility = View.VISIBLE
-                            viewModel.messageEventData.observe(viewLifecycleOwner) { stringId ->
-                                Snackbar.make(requireView(), stringId, Snackbar.LENGTH_LONG).show()
-                            }
-                        }
-                    }
+                    it.data?.let { utilChecking.successCheking() }
                 }
-
-                Status.ERROR -> {
-                    MainScope().launch {
-                        binding.progressBar.visibility = View.GONE
-                        binding.scrollView.visibility = View.VISIBLE
-                        viewModel.messageEventData.observe(viewLifecycleOwner) { stringId ->
-                            Snackbar.make(requireView(), stringId, Snackbar.LENGTH_LONG).show()
-                        }
-                    }
-                }
-
-                Status.LOADING -> {
-                    MainScope().launch {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.scrollView.visibility = View.GONE
-                    }
-                }
+                Status.ERROR -> utilChecking.errorCheking()
+                Status.LOADING -> utilChecking.loadingCheking()
             }
         }
     }
 
     private fun clearFields() {
         binding.apply {
-            editName.text?.clear()
-            editEmail.text?.clear()
+            includeDetailsEvents.editName.text?.clear()
+            includeDetailsEvents.editEmail.text?.clear()
         }
     }
 
@@ -127,18 +129,18 @@ class DetailsEventsFragment : Fragment() {
         }
     }
 
-    private fun clickChecking() {
-        binding.btnChekin.setOnClickListener {
-            val name = editName.text.toString()
-            val email = editEmail.text.toString()
-            if (name.isNotEmpty() && email.isNotEmpty()) {
-                sendChecking(name, email)
+    private fun clickChecking(){
+        include_details_events.btnChekin.setOnClickListener {
+            val name = include_details_events.editName.text.toString()
+            val email = include_details_events.editEmail.text.toString()
+            if (name.isEmpty() && email.isEmpty()) {
+                Snackbar.make(requireView(), R.string.fildtext_empty, Snackbar.LENGTH_LONG).show()
+            }
+            else if (!name.matches("[a-zA-z]+([ '-][a-zA-Z]+)*".toRegex())
+                or !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Snackbar.make(requireView(),getString(R.string.text_name_email_invalid), Snackbar.LENGTH_LONG).show()
             } else {
-                Snackbar.make(
-                    requireView(),
-                    "Campos Nome/E-mail não pode está fazios!",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                sendChecking(name, email)
             }
         }
     }
